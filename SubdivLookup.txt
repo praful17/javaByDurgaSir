@@ -1,0 +1,23 @@
+@Entity
+@Table(name="SUBDIV_LOOKUP")
+public class SubdivLookup {
+
+   @Id
+   @GeneratedValue(strategy=GenerationType.AUTO)
+   private int id;
+
+   @Column(name=LABEL)
+   private String label;
+
+   @Column(name="CODE", unique="true")
+   private String code;
+
+   @ManyToOne
+   @JoinColumn(name="FK_DIV_CODE",
+        referencedColumnName = "CODE")
+   private DivLookup divId;
+
+   @OneToMany(mappedBy="subdivId")
+   private List<ClassificationLookup> classificationList = new ArrayList<ClassificationLookup>();
+ 
+}

@@ -1,0 +1,16 @@
+@Entity
+@Table(name="SESCA_CLASSIFICATION_LOOKUP")
+public class SescaClassificationLookup {
+
+   @Id
+   @GeneratedValue(strategy=GenerationType.AUTO)
+   private int id;
+
+   @Column(name=LABEL)
+   private String label;
+
+   @Column(name=CODE, unique="true")
+   private String code;
+
+   @OneToMany(mappedBy="sescaClassificationId")
+   private List<ClassificationLookup> classificationList = new ArrayList<ClassificationLookup>();

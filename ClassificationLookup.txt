@@ -1,0 +1,23 @@
+@Entity
+@Table(name="CLASSIFICATION_LOOKUP")
+public class ClassificationLookup {
+
+   @Id
+   @GeneratedValue(strategy=GenerationType.AUTO)
+   private int id;
+
+   @Column(name=LABEL)
+   private String label;
+
+   @Column(name=CODE, unique="true")
+   private String code;
+
+   @ManyToOne
+   @JoinColumn(name="FK_SUBDIV_CODE",
+        referencedColumnName = "CODE")
+   private SubdivLookup subdivId;
+
+   @ManyToOne
+   @JoinColumn(name="FK_SESCA_CLASSIFICATION_CODE",
+        referencedColumnName = "CODE")
+   private SescaClassificationLookup sescaClassificationId;

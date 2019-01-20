@@ -1,0 +1,7 @@
+Session session = HibernateUtil.currentSession();
+    
+        Criteria crit = session.createCriteria(DivLookup.class);
+        Criteria prdCrit = crit.createCriteria("subdivList");
+        /* prdCrit.add(Restrictions.gt("price",new Double(25.0))); */
+        List results = crit.list();
+       /* displaySupplierList(results); */

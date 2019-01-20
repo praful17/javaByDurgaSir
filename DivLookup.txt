@@ -1,0 +1,18 @@
+@Entity
+@Table(name="DIV_LOOKUP")
+public class DivLookup {
+
+   @Id
+   @GeneratedValue(strategy=GenerationType.AUTO)
+   private int id;
+
+   @Column(name=LABEL)
+   private String label;
+
+   @Column(name="CODE", unique="true")
+   private String code;
+
+   @OneToMany(mappedBy="divId")
+   private List<SubdivLookup> subdivList = new ArrayList<SubdivLookup>();
+ 
+}
